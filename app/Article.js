@@ -41,7 +41,12 @@ async function Article({ article }) {
                     </p>
                   </footer>
                 </div>
-                <ReadAllArticles article={news} />
+                <ReadAllArticles
+                  article={news}
+                  url={url}
+                  data={data}
+                  filename={filename}
+                />
               </div>
             </article>
           );

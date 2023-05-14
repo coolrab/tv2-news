@@ -1,15 +1,24 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-const ReadAllArticles = ({ article }) => {
-  console.log("article", article.id);
+const ReadAllArticles = ({ article, url, data, filename }) => {
   const router = useRouter();
-  console.log(article);
-  const id = article.id;
+  const title = article.title;
+  const updatedAt = article.updatedAt;
+  const news = {
+    title: title,
+    updatedAt: updatedAt,
+    url: url,
+    data: data,
+    filename: filename,
+  };
   const handleClick = () => {
-    const url = `/article/${id}`;
+    const queryString = Object.entries(news)
+      .map(([key, value]) => `${key}=${value}`)
+      .join("&");
+    const url = `/article?${queryString}`;
+    console.log(url);
     router.push(url);
-
   };
   return (
     <button
