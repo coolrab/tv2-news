@@ -1,8 +1,28 @@
-import NewsList from "./NewsList";
-import getAllNewsCategories from "../lib/getAllNewsCategories";
+"use client";
+import { useEffect, useState } from "react";
+import AllNewsCategory from "./AllNews.js";
+export default function Page() {
+  const [category, setCategory] = useState([]);
 
-export default async function Homepage() {
-  const allNewsCategories = getAllNewsCategories();
-  const allNews = await allNewsCategories;
-  return <NewsList news={allNews} />;
+  useEffect(() => {
+    async function getNewsCategory() {
+      const res = await fetch(
+        `https://breaking-api.alpha.tv2.no/v1/public/portals?page=1`
+      );
+      const data = await res.json();
+      setCategory(data.docs);
+    }
+
+    getNewsCategory();
+  }, []);
+  if (!category) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <>
+      <AllNewsCategory data={category} />
+      {/* <NewsList news={category} /> */}
+    </>
+  );
 }
