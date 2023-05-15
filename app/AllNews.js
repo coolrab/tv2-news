@@ -30,6 +30,7 @@ export default function AllNewsCategories({ data }) {
             <Link key={id} href={`/category/${id}`}>
               <article className="bg-slate-100 dark:bg-slate-800 flex flex-col rounded-lg shadow-sm hover:scale-150 hover:shadow-lg hover:bg-slate-200 transition-all duration-200 ease-out">
                 {url && filename && (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={url}
                     width={350}

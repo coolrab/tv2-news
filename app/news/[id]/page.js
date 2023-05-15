@@ -18,6 +18,7 @@ async function ArticlePage({ searchParams }) {
     <article className="flex flex-col">
       <section className="flex flex-col lg:flex-row pb-24 px-0 lg:px-10">
         {article.url && article.filename && (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={article.url}
             alt={article.filename}
