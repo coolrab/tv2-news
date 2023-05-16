@@ -1,8 +1,8 @@
 "use client";
 import { notFound } from "next/navigation";
 import striptags from "striptags";
-import { format } from "date-fns";
 import Link from "next/link";
+import LiveTimeStamp from "../../LiveTimeStamp";
 
 async function ArticlePage({ searchParams }) {
   if (
@@ -37,7 +37,8 @@ async function ArticlePage({ searchParams }) {
               Source: {article.source || "unknown"}
             </h2>
             <p className="pl-4 ">
-              {format(new Date(article.updatedAt), "dd/MM/yyyy HH:mm")}
+              <LiveTimeStamp time={article.updatedAt} />
+              {/* {format(new Date(article.updatedAt), "dd/MM/yyyy HH:mm")} */}
             </p>
           </div>
           <p className="text-xl pb-8">{striptags(article.content)}</p>

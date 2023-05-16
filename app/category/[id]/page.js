@@ -5,6 +5,7 @@ import ReadAllArticles from "../../ReadAllArticles";
 import striptags from "striptags";
 import { format } from "date-fns";
 import Link from "next/link";
+import LiveTimeStamp from "../../LiveTimeStamp";
 
 export const mapData = (data) => {
   const { content } = data;
@@ -97,7 +98,8 @@ export default function AllPosts({ params }) {
                       <h2 className="font-bold">UpdatedAt: </h2>
 
                       <p>
-                        {format(new Date(news.updatedAt), "dd/MM/yyyy HH:mm")}
+                        <LiveTimeStamp time={news.updatedAt} />
+                        {/* {format(new Date(news.updatedAt), "dd/MM/yyyy HH:mm")} */}
                       </p>
                     </footer>
                   </div>

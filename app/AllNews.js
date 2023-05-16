@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { format } from "date-fns";
+import LiveTimeStamp from "./LiveTimeStamp";
 
 export const getPicture = (data) => {
   const { background, cover } = data;
@@ -48,7 +49,8 @@ export default function AllNewsCategories({ data }) {
                     <footer className="text-xs text-right ml-auto flex space-x-1 pt-5 italic text-gray-400">
                       <h2 className="font-bold">UpdatedAt: </h2>
                       <p>
-                        {format(new Date(news.updatedAt), "dd/MM/yyyy HH:mm")}
+                        <LiveTimeStamp time={news.updatedAt} />
+                        {/* {format(new Date(news.updatedAt), "dd/MM/yyyy HH:mm")} */}
                       </p>
                     </footer>
                   </div>
